@@ -1,0 +1,26 @@
+During high disk writes (maybe reads) to my slow HDD (specifically downloading steam games) the system becomes unresponsive for minutes at a time.
+
+(These are likely not relevent at all. I've notices no difference so far)
+systemctl enable preload
+systemctl enable irqbalance
+
+setting 
+vm.vm.dirty_background_ratio=1
+vm.dirty_ratio=10
+commands:
+sysctl vm.vm.dirty_background_ratio=1
+sysctl vm.dirty_ratio=10
+seemed to help a good amount
+(Very annoying that systemctl and sysctl have nothing to do with each other)
+
+set bfq scheduler for slow hard drive (Did this wrong initially)
+command:
+echo bfq > /sys/block/sda/queue/scheduler
+This also helped a little. Still some hangs
+
+decrease the time before write-back-throttling
+command:
+echo 1000 > /sys/block/sda/queue/wbt_lat_usec
+
+system fixed??
+
