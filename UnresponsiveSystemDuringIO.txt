@@ -16,11 +16,29 @@ seemed to help a good amount
 set bfq scheduler for slow hard drive (Did this wrong initially)
 command:
 echo bfq > /sys/block/sda/queue/scheduler
+^^^^
+WRONG
+correct:
+echo bfq > /sys/block/sdc/queue/scheduler
 This also helped a little. Still some hangs
 
 decrease the time before write-back-throttling
 command:
 echo 1000 > /sys/block/sda/queue/wbt_lat_usec
+^^^^
+WRONG
+correct:
+echo 1000 > /sys/block/sda/queue/wbt_lat_usec
 
 system fixed??
 Not completely fixed. Will restart (are these permanent?) and see if tighting up any of these fixes it forever. It is a lot better now though.
+GODDAMMIT SDC NOT SDA SDC NOT SDA
+add udev rules to set wbt times for sdc. Maybe should set these for sda, my fast drive, since my copy paste errors seemed to help?
+udev rules in 
+
+cat /etc/udev/rules.d/60-ioscheduler.rules                                                                                                                       
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/wbt_lat_usec}="10000"
+
+also maybe steam is dumping these on my main drive anyway? Why is my drive full? Why don't symlinks ever work like I expect? Why doesn't steam let me point to a full library folder? A mystery...
+
