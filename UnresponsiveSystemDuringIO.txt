@@ -28,7 +28,7 @@ echo 1000 > /sys/block/sda/queue/wbt_lat_usec
 ^^^^
 WRONG
 correct:
-echo 1000 > /sys/block/sda/queue/wbt_lat_usec
+echo 1000 > /sys/block/sdc/queue/wbt_lat_usec
 
 system fixed??
 Not completely fixed. Will restart (are these permanent?) and see if tighting up any of these fixes it forever. It is a lot better now though.
