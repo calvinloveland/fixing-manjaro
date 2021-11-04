@@ -51,3 +51,6 @@ Steam doesn't like that. Trying:
 I like this mount better. Steam doesn't but I do.
 Installed lutris
 Launching steam through lutris with LSI https://github.com/solus-project/linux-steam-integration fixes all my problems. Except maybe system unresponsiveness. We'll see... tomorrow. after i sleep
+
+Everything gets bfq. I think bfq feels better
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/scheduler}="bfq"
