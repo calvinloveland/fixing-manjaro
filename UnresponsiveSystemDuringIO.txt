@@ -54,3 +54,9 @@ Launching steam through lutris with LSI https://github.com/solus-project/linux-s
 
 Everything gets bfq. I think bfq feels better
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/scheduler}="bfq"
+
+Days later:
+Everything gets a trip to the garbage can. Don't like KDE. It freezes and stutter and just straight up lost my taskbar at one point.
+Going with GNOME Manjaro, maybe Wayland? Is that the default for GNOME now? Dunno, documentation is old.
+Also probs not encrypting my drive. putting in your password on boot is annoying.
+ROUND 2
